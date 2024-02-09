@@ -1,6 +1,6 @@
 {
   "name": "@roman86/twlit",
-  "version": "0.0.1-alpha.37",
+  "version": "1.0.0",
   "description": "",
   "main": "./bin/index.js",
   "bin": {
