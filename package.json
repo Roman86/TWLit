@@ -1,5 +1,5 @@
 {
-  "name": "twlit",
+  "name": "@roman86/twlit",
   "version": "0.0.1-alpha.37",
   "description": "",
   "main": "./bin/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/markjameshoward/twlit.git"
+    "url": "https://github.com/Roman86/TWLit.git"
   },
   "type": "module",
   "keywords": [

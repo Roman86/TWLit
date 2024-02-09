@@ -5,11 +5,13 @@ import yargs from "yargs";
 
 let input;
 let output;
+let watch;
 
 try {
   const argv = yargs(process.argv.slice(2)).argv;
   input = argv.input ?? "./TailwindGenerated.css";
   output = argv.output ?? "./ReadyForLitimport.js";
+  watch = argv.watch ?? false;
 } catch (e) {
   console.log(`Error reading input/output parameters ${e}`);
 }
@@ -17,12 +19,12 @@ try {
 console.log(`Reading from file ${input}`);
 console.log(`Writing to ${output}`);
 
-fs.watchFile(input, { interval: 1000 }, () => {
+const task = () => {
   try {
     let contents;
 
     try {
-       contents = fs.readFileSync(input, "utf8");
+      contents = fs.readFileSync(input, "utf8");
     } catch (e) {
       console.log(
         `Failed to read file ${input}. Might just not be created yet? retrying..`
@@ -42,4 +44,10 @@ fs.watchFile(input, { interval: 1000 }, () => {
   } catch (err) {
     console.log(err);
   }
-});
+};
+
+if (watch) {
+  fs.watchFile(input, {interval: 1000}, task);
+} else {
+  task();
+}
