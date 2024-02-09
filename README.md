@@ -27,12 +27,12 @@ In this mode the process won't exit, it will constantly watch the input file and
 
 ```package.json
 "scripts": {
-    "build": "echo nil > src/twlit.ts & echo nil > src/tw_output.css & concurrently \"tailwindcss -i src/tw_global.css -o src/tw_output.css & twlit --input src/tw_output.css --output src/twlit.ts\" \"tsc\"",
-    "build:watch": "echo nil > src/twlit.ts & echo nil > src/tw_output.css & concurrently \"tailwindcss -i src/tw_global.css -o src/tw_output.css --watch\" \"twlit --input src/tw_output.css --output src/twlit.ts --watch\" \"tsc --watch\"",
+    "build": "touch src/twlit.ts & touch src/tw_output.css & concurrently \"tailwindcss -i src/tw_global.css -o src/tw_output.css & twlit --input src/tw_output.css --output src/twlit.ts\" \"tsc\"",
+    "build:watch": "touch src/twlit.ts & touch src/tw_output.css & concurrently \"tailwindcss -i src/tw_global.css -o src/tw_output.css --watch\" \"twlit --input src/tw_output.css --output src/twlit.ts --watch\" \"tsc --watch\"",
 }
 ```
 
-Echo commands are used to create the files if they don't exist. This is to prevent errors when running the build command for the first time.
+Touch commands are used to create the files if they don't exist. This is to prevent errors when running the build command for the first time.
 
 Notice: example filenames use .ts extension, change to .js if you are using JavaScript.
 
